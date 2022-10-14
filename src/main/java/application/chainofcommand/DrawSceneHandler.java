@@ -1,16 +1,16 @@
 package application.chainofcommand;
 
-public class DrawSceneHandler implements Handler {
-	Handler nextHandler;
+public class DrawSceneHandler extends Handler implements IHandler {
+	IHandler nextHandler;
 	
 	@Override
-	public void setNextHandler(Handler nextHandler) {
+	public void setNextHandler(IHandler nextHandler) {
 		this.nextHandler = nextHandler;
 	}
 
 	@Override
-	public void handleRequest(String query) {
-		if (query.equals("DRAWSCENE")) {
+	public void handleRequest(String[] query) {
+		if (query[0].equals("DRAWSCENE")) {
 			//EXECUTE CreateCommand and store state
 			System.out.println("DRAWSCENE");
 			}

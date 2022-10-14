@@ -1,14 +1,14 @@
 package application.chainofcommand;
 
-public class ColorHandler implements Handler {
-	Handler nextHandler;
+public class ColorHandler extends Handler implements IHandler {
+	IHandler nextHandler;
 	
-	public void setNextHandler(Handler nextHandler) {
+	public void setNextHandler(IHandler nextHandler) {
 		this.nextHandler = nextHandler;
 	}
 
-	public void handleRequest(String query) {
-		if (query.equals("COLOR")) {
+	public void handleRequest(String[] query) {
+		if (query[0].equals("COLOR")) {
 			//EXECUTE ColorCommand and store state
 			System.out.println("COLOR");
 			}

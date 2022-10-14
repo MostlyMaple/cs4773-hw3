@@ -1,0 +1,15 @@
+state:
+Shape[] existing_shapes
+Shape selected_shape
+
+Strategy for each command
+
+
+CommandInterpreter:
+
+takes in input file of command list,
+reads first word of string ex "Create",
+passes rest of string into create strategy
+
+uses "chain of command / responsibility" pattern to avoid large switch conditional statement:
+ex, pass first word of command list to "create" command, if it is not create, move it down

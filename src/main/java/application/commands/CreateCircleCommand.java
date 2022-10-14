@@ -1,9 +1,10 @@
 package application.commands;
+import application.canvas.Canvas;
 
 public class CreateCircleCommand implements Command {
 
 	@Override
-	public void execute() {
+	public void execute(String[] query, Canvas canvas) {
 		// TODO Auto-generated method stub
 		
 	}

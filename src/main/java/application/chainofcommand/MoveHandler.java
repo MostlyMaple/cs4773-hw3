@@ -1,17 +1,17 @@
 package application.chainofcommand;
 
-public class MoveHandler implements Handler{
+public class MoveHandler extends Handler implements IHandler{
 
-	Handler nextHandler;
+	IHandler nextHandler;
 	
 	@Override
-	public void setNextHandler(Handler nextHandler) {
+	public void setNextHandler(IHandler nextHandler) {
 		this.nextHandler = nextHandler;
 	}
 
 	@Override
-	public void handleRequest(String query) {
-		if (query.equals("MOVE")) {
+	public void handleRequest(String[] query) {
+		if (query[0].equals("MOVE")) {
 			//EXECUTE CreateCommand and store state
 			System.out.println("MOVE");
 			}
