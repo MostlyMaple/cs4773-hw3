@@ -1,6 +1,6 @@
 package application.chainofcommand;
 
-public class SelectHandler implements Handler{
+public class UndoHandler implements Handler {
 	Handler nextHandler;
 	
 	@Override
@@ -10,12 +10,13 @@ public class SelectHandler implements Handler{
 
 	@Override
 	public void handleRequest(String query) {
-		if (query.equals("SELECT")) {
+		if (query.equals("UNDO")) {
 			//EXECUTE CreateCommand and store state
-			System.out.println("SELECT");
+			System.out.println("UNDO");
 			}
 			else {
 			nextHandler.handleRequest(query);
 			}
 	}	
+
 }

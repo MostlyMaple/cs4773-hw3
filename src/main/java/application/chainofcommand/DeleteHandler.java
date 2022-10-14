@@ -1,6 +1,6 @@
 package application.chainofcommand;
 
-public class SelectHandler implements Handler{
+public class DeleteHandler implements Handler {
 	Handler nextHandler;
 	
 	@Override
@@ -10,9 +10,9 @@ public class SelectHandler implements Handler{
 
 	@Override
 	public void handleRequest(String query) {
-		if (query.equals("SELECT")) {
+		if (query.equals("DELETE")) {
 			//EXECUTE CreateCommand and store state
-			System.out.println("SELECT");
+			System.out.println("DELETE");
 			}
 			else {
 			nextHandler.handleRequest(query);

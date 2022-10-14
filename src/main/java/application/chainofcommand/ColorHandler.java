@@ -1,21 +1,20 @@
 package application.chainofcommand;
 
-public class SelectHandler implements Handler{
+public class ColorHandler implements Handler {
 	Handler nextHandler;
 	
-	@Override
 	public void setNextHandler(Handler nextHandler) {
 		this.nextHandler = nextHandler;
 	}
 
-	@Override
 	public void handleRequest(String query) {
-		if (query.equals("SELECT")) {
-			//EXECUTE CreateCommand and store state
-			System.out.println("SELECT");
+		if (query.equals("COLOR")) {
+			//EXECUTE ColorCommand and store state
+			System.out.println("COLOR");
 			}
 			else {
 			nextHandler.handleRequest(query);
 			}
 	}	
+
 }
