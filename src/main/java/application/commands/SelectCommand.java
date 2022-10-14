@@ -1,8 +1,5 @@
 package application.commands;
 import application.canvas.Canvas;
-import application.shapes.Circle;
-import application.shapes.Color;
-import application.shapes.Origin;
 
 public class SelectCommand implements Command {
 
@@ -11,9 +8,9 @@ public class SelectCommand implements Command {
 		int selected = -1;
 		try {
 			selected = Integer.parseInt(query[1]);
-			if (selected < canvas.getShapes().size()) {
+			if ((selected-1) >= 0 && (selected-1) < canvas.getShapes().size()) {
 				canvas.setCurrentShape(selected - 1);
-				System.out.println("Selected: " + (selected - 1));
+				System.out.println("Selected: " + (selected));
 			} else {
 				System.out.println("ERROR: invalid shape for SELECT");
 			}
@@ -26,7 +23,7 @@ public class SelectCommand implements Command {
 	}
 
 	@Override
-	public void undo() {
+	public void undo(Canvas canvas) {
 		// TODO Auto-generated method stub
 
 	}

@@ -14,7 +14,7 @@ public class Circle extends Shape {
     }
 
     public String toString() {
-        return "Circle, Color: " + super.color + ", Origin: " + super.origin.toString() + ", Radius: " + this.radius;
+        return "Circle, Color: " + super.getColor() + ", Origin: " + super.getOrigin().toString() + ", Radius: " + this.radius;
     }
 
 }

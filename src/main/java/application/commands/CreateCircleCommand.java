@@ -23,7 +23,7 @@ public class CreateCircleCommand implements Command {
 	}
 
 	@Override
-	public void undo() {
+	public void undo(Canvas canvas) {
 		// TODO Auto-generated method stub
 		
 	}

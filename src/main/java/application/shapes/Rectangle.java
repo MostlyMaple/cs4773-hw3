@@ -20,7 +20,7 @@ public class Rectangle extends Shape {
     }
 
     public String toString() {
-        return "Rectangle, Color: " + super.color + ", Origin: " + super.origin.toString() + ", Width: " + this.width + ", Height: " + this.height;
+        return "Rectangle, Color: " + super.getColor() + ", Origin: " + super.getOrigin().toString() + ", Width: " + this.width + ", Height: " + this.height;
     }
 
 }
