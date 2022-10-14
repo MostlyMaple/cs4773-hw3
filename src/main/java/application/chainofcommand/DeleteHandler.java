@@ -11,7 +11,7 @@ public class DeleteHandler extends Handler implements IHandler {
 	@Override
 	public void handleRequest(String[] query) {
 		if (query[0].equals("DELETE")) {
-			//EXECUTE CreateCommand and store state
+			super.commands.executeCommand(3, query, canvas);
 			System.out.println("DELETE");
 			}
 			else {

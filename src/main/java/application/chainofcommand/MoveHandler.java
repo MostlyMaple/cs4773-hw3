@@ -12,7 +12,7 @@ public class MoveHandler extends Handler implements IHandler{
 	@Override
 	public void handleRequest(String[] query) {
 		if (query[0].equals("MOVE")) {
-			//EXECUTE CreateCommand and store state
+			super.commands.executeCommand(6, query, canvas);
 			System.out.println("MOVE");
 			}
 			else {

@@ -1,12 +1,14 @@
 package application.commands;
 import application.canvas.Canvas;
+import application.shapes.Shape;
 
 public class DrawSceneCommand implements Command {
 
 	@Override
 	public void execute(String[] query, Canvas canvas) {
-		// TODO Auto-generated method stub
-
+		for(Shape shape: canvas.getShapes()) {
+			System.out.println(shape.toString());
+		}
 	}
 
 	@Override

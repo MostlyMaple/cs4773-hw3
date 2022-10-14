@@ -11,7 +11,7 @@ public class SelectHandler extends Handler implements IHandler{
 	@Override
 	public void handleRequest(String[] query) {
 		if (query[0].equals("SELECT")) {
-			//EXECUTE CreateCommand and store state
+			super.commands.executeCommand(7, query, canvas);
 			System.out.println("SELECT");
 			}
 			else {

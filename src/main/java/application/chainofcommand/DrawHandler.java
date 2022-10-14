@@ -11,7 +11,7 @@ public class DrawHandler extends Handler implements IHandler {
 	@Override
 	public void handleRequest(String[] query) {
 		if (query[0].equals("DRAW")) {
-			//EXECUTE CreateCommand and store state
+			super.commands.executeCommand(4, query, canvas);
 			System.out.println("DRAW");
 			}
 			else {

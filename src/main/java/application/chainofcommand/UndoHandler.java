@@ -11,7 +11,7 @@ public class UndoHandler extends Handler implements IHandler {
 	@Override
 	public void handleRequest(String[] query) {
 		if (query[0].equals("UNDO")) {
-			//EXECUTE CreateCommand and store state
+			super.commands.executeCommand(8, query, canvas);
 			System.out.println("UNDO");
 			}
 			else {

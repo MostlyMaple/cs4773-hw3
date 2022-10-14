@@ -9,11 +9,9 @@ public class CreateRectangleCommand implements Command{
 
 	@Override
 	public void execute(String[] query, Canvas canvas) {
-
 		Origin origin = new Origin(0,0);
 		int width = 0;
 		int height = 0;
-
 		try {
 			width = Integer.parseInt(query[2]);
 			height = Integer.parseInt(query[3]);
@@ -25,7 +23,6 @@ public class CreateRectangleCommand implements Command{
 			e.printStackTrace();
 			System.exit(-1);
 		}
-		
 	}
 
 	@Override

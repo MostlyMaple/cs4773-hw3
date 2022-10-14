@@ -15,7 +15,5 @@ public class Main {
 
         CommandInterpreter commandInterpreter = new CommandInterpreter(filename, handlerChain);
         commandInterpreter.readCommands();
-
-        System.out.println(canvas.getShapes().get(0).toString());
     }
 }

@@ -7,6 +7,7 @@ public class Canvas {
     private ArrayList<Shape> shapeList;
 
     public Canvas() {
+    	this.currentShape = -1;
         shapeList = new ArrayList<Shape>();
     }
 
@@ -23,8 +24,12 @@ public class Canvas {
     public void setCurrentShape(int currentShape) {
         this.currentShape = currentShape;
     }
+    
+    public int getCurrentShape() {
+        return this.currentShape;
+    }
 
     public ArrayList<Shape> getShapes() {
-        return shapeList;
+        return this.shapeList;
     }
 }

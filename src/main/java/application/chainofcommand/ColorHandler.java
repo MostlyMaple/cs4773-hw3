@@ -9,7 +9,7 @@ public class ColorHandler extends Handler implements IHandler {
 
 	public void handleRequest(String[] query) {
 		if (query[0].equals("COLOR")) {
-			//EXECUTE ColorCommand and store state
+			super.commands.executeCommand(0, query, canvas);
 			System.out.println("COLOR");
 			}
 			else {
