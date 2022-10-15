@@ -7,7 +7,7 @@ public class HandlerChain {
 	private IHandler firstHandler;
 	private ArrayList<Handler> handlers = new ArrayList<Handler>();
 
-	public HandlerChain(Canvas canvas, CommandLoader commandLoader) {
+	public HandlerChain(Canvas canvas, CommandLoader commandLoader, CommandHistory commandHistory) {
 
 		ColorHandler colorHandler = new ColorHandler();
 		CreateHandler createHandler = new CreateHandler();
@@ -31,6 +31,7 @@ public class HandlerChain {
 		for (int i = 0; i < handlers.size(); i++) {
 			handlers.get(i).setCommands(commandLoader.getDrawingCommands());
 			handlers.get(i).setCanvas(canvas);
+			handlers.get(i).setCommandHistory(commandHistory);
 		}
 
 		colorHandler.setNextHandler(createHandler);

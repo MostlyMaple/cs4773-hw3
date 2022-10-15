@@ -5,16 +5,19 @@ import application.shapes.Origin;
 import application.shapes.Circle;
 
 public class CreateCircleCommand implements Command {
-
+	Circle newCircle;
+	
 	@Override
-	public void execute(String[] query, Canvas canvas) {
+	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		Origin origin = new Origin(0,0);
 		int radius = 0;
 		try {
 			radius = Integer.parseInt(query[2]);
 			Circle circle = new Circle(Color.Blue, origin, radius);
+			newCircle = circle;
 			canvas.addShape(circle);
-			System.out.println(circle.toString());
+			commandHistory.addToCommandHistory(this);
+			//System.out.println(circle.toString());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -23,9 +26,8 @@ public class CreateCircleCommand implements Command {
 	}
 
 	@Override
-	public void undo(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
+	public void undo(Canvas canvas, CommandHistory commandHistory) {
+		canvas.getShapes().remove(newCircle);
 	}
 
 }

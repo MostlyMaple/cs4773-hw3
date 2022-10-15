@@ -1,13 +1,18 @@
 package application.commands;
 import application.canvas.Canvas;
+import application.shapes.Shape;
 
 public class DeleteCommand implements Command{
-
+	Shape deletedShape;
+	int selectedShape;
+	
 	@Override
-	public void execute(String[] query, Canvas canvas) {
+	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		int selected = canvas.getCurrentShape();
 		if (selected != -1 && selected < canvas.getShapes().size()) {
-			canvas.getShapes().remove(selected);
+			deletedShape = canvas.getShapes().remove(selected);
+			selectedShape = selected;
+			commandHistory.addToCommandHistory(this);
 		} else {
 			System.out.println("no shape selected");
 		}
@@ -15,9 +20,8 @@ public class DeleteCommand implements Command{
 	}
 
 	@Override
-	public void undo(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
+	public void undo(Canvas canvas, CommandHistory commandHistory) {
+			canvas.getShapes().add(selectedShape, deletedShape);
 	}
 
 }

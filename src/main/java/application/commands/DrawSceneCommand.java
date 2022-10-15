@@ -5,16 +5,16 @@ import application.shapes.Shape;
 public class DrawSceneCommand implements Command {
 
 	@Override
-	public void execute(String[] query, Canvas canvas) {
+	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		for(Shape shape: canvas.getShapes()) {
-			System.out.println(shape.toString());
+			String output = shape.toString();
+			canvas.setOutputString(canvas.getOutputString() + output + '\n');
+			System.out.println(output);
 		}
 	}
 
 	@Override
-	public void undo(Canvas canvas) {
-		// TODO Auto-generated method stub
-
+	public void undo(Canvas canvas, CommandHistory commandHistory) {
 	}
 
 }

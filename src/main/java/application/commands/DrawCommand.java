@@ -4,19 +4,21 @@ import application.canvas.Canvas;
 public class DrawCommand implements Command {
 
 	@Override
-	public void execute(String[] query, Canvas canvas) {
+	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		int selected = canvas.getCurrentShape();
 		if (selected != -1 && selected < canvas.getShapes().size()) {
-			System.out.println(canvas.getShapes().get(selected));
+			String output = canvas.getShapes().get(selected).toString();
+			canvas.setOutputString(canvas.getOutputString() + output + '\n');
+			System.out.println(output);
 		} else {
-			System.out.println("no shape selected");
+			String output = "no shape selected";
+			canvas.setOutputString(canvas.getOutputString() + output + '\n');
+			System.out.println(output);
 		}
 	}
 
 	@Override
-	public void undo(Canvas canvas) {
-		// TODO Auto-generated method stub
-
+	public void undo(Canvas canvas, CommandHistory commandHistory) {
 	}
 
 }

@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Canvas {
     private int currentShape;
     private ArrayList<Shape> shapeList;
-
+    private String outputString = "";
+    
     public Canvas() {
     	this.currentShape = -1;
         shapeList = new ArrayList<Shape>();
@@ -32,4 +33,12 @@ public class Canvas {
     public ArrayList<Shape> getShapes() {
         return this.shapeList;
     }
+
+	public String getOutputString() {
+		return outputString;
+	}
+
+	public void setOutputString(String outputString) {
+		this.outputString = outputString;
+	}
 }

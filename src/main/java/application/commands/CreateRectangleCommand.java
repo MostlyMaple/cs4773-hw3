@@ -6,9 +6,10 @@ import application.shapes.Rectangle;
 import application.canvas.Canvas;
 
 public class CreateRectangleCommand implements Command{
-
+	Rectangle newRectangle;
+	
 	@Override
-	public void execute(String[] query, Canvas canvas) {
+	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		Origin origin = new Origin(0,0);
 		int width = 0;
 		int height = 0;
@@ -16,8 +17,10 @@ public class CreateRectangleCommand implements Command{
 			width = Integer.parseInt(query[2]);
 			height = Integer.parseInt(query[3]);
 			Rectangle rectangle = new Rectangle(Color.Red, origin, height, width);
+			newRectangle = rectangle;
 			canvas.addShape(rectangle);
-			System.out.println(rectangle.toString());
+			commandHistory.addToCommandHistory(this);
+			//System.out.println(rectangle.toString());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -26,9 +29,8 @@ public class CreateRectangleCommand implements Command{
 	}
 
 	@Override
-	public void undo(Canvas canvas) {
-		// TODO Auto-generated method stub
-		
+	public void undo(Canvas canvas, CommandHistory commandHistory) {
+		canvas.getShapes().remove(newRectangle);
 	}
 
 }

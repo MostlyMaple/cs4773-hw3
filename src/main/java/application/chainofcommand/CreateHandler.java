@@ -13,12 +13,12 @@ public class CreateHandler extends Handler implements IHandler{
 		if (query[0].equals("CREATE")) {
 			//EXECUTE CreateCommand and store state
 			if (query[1].equals("RECTANGLE")) {
-				super.commands.executeCommand(2, query, canvas);
+				super.commands.executeCommand(2, query, canvas, commandHistory);
 			}
 			else if (query[1].equals("CIRCLE")) {
-				super.commands.executeCommand(1, query, canvas);
+				super.commands.executeCommand(1, query, canvas, commandHistory);
 			}
-			System.out.println("CREATE");
+			//System.out.println("CREATE");
 			}
 			else {
 			nextHandler.handleRequest(query);

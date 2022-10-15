@@ -14,7 +14,11 @@ public class CommandHistory {
 	}
 	
 	public Command getRecentCommand() {
-		return commandHistory.pop();
+		if (commandHistory.size() > 0) {
+			return commandHistory.pop();
+		} else {
+			return null;
+		}
 	}
 	
 }

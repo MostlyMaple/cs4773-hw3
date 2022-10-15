@@ -8,7 +8,7 @@ public class MoveCommand implements Command{
 	int prevSelected;
 	
 	@Override
-	public void execute(String[] query, Canvas canvas) {
+	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		int selected = canvas.getCurrentShape();
 		int x = 0;
 		int y = 0;
@@ -20,6 +20,7 @@ public class MoveCommand implements Command{
 				prevSelected = selected;
 				prevOrigin = canvas.getShapes().get(selected).getOrigin();
 				canvas.getShapes().get(selected).setOrigin(origin);
+				commandHistory.addToCommandHistory(this);
 			}  else {
 				System.out.println("no shape selected");
 			}
@@ -31,7 +32,7 @@ public class MoveCommand implements Command{
 	}
 
 	@Override
-	public void undo(Canvas canvas) {
+	public void undo(Canvas canvas, CommandHistory commandHistory) {
 		canvas.getShapes().get(prevSelected).setOrigin(prevOrigin);
 	}
 
