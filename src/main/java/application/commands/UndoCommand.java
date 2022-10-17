@@ -7,13 +7,13 @@ public class UndoCommand implements Command {
 	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		Command command = commandHistory.getRecentCommand();
 		if (command != null) { 
-			command.undo(canvas, commandHistory);
+			command.undo(canvas);
 		} else {
 			System.out.println("Nothing left to undo!");
 		}
 	}
 
-	public void undo(Canvas canvas, CommandHistory commandHistory) {
+	public void undo(Canvas canvas) {
 		
 	}
 

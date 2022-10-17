@@ -30,7 +30,7 @@ public class DeleteCommand implements Command{
 	}
 
 	@Override
-	public void undo(Canvas canvas, CommandHistory commandHistory) {
+	public void undo(Canvas canvas) {
 			canvas.getShapes().add(selectedShape, deletedShape);
 	}
 

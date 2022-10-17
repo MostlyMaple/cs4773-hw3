@@ -12,7 +12,6 @@ public class DrawSceneHandler extends Handler implements IHandler {
 	public void handleRequest(String[] query) {
 		if (query[0].equals("DRAWSCENE")) {
 			super.commands.executeCommand(5, query, canvas, commandHistory);
-			//System.out.println("DRAWSCENE");
 			}
 			else {
 			nextHandler.handleRequest(query);

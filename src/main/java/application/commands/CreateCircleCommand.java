@@ -26,7 +26,6 @@ public class CreateCircleCommand implements Command {
 			canvas.addShape(circle);
 			CreateCircleCommand duplicate = new CreateCircleCommand(newCircle);
 			commandHistory.addToCommandHistory(duplicate);
-			//System.out.println(circle.toString());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -35,7 +34,7 @@ public class CreateCircleCommand implements Command {
 	}
 
 	@Override
-	public void undo(Canvas canvas, CommandHistory commandHistory) {
+	public void undo(Canvas canvas) {
 		canvas.getShapes().remove(newCircle);
 	}
 

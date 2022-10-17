@@ -29,7 +29,6 @@ public class CreateRectangleCommand implements Command{
 			CreateRectangleCommand duplicate = new CreateRectangleCommand(this.newRectangle);
 			canvas.addShape(rectangle);
 			commandHistory.addToCommandHistory(duplicate);
-			//System.out.println(rectangle.toString());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -38,7 +37,7 @@ public class CreateRectangleCommand implements Command{
 	}
 
 	@Override
-	public void undo(Canvas canvas, CommandHistory commandHistory) {
+	public void undo(Canvas canvas) {
 		canvas.getShapes().remove(newRectangle);
 	}
 

@@ -14,7 +14,7 @@ public class DrawSceneCommand implements Command {
 	}
 
 	@Override
-	public void undo(Canvas canvas, CommandHistory commandHistory) {
+	public void undo(Canvas canvas) {
 	}
 
 }

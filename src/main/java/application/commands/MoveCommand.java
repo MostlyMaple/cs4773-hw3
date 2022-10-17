@@ -42,7 +42,7 @@ public class MoveCommand implements Command{
 	}
 
 	@Override
-	public void undo(Canvas canvas, CommandHistory commandHistory) {
+	public void undo(Canvas canvas) {
 		canvas.getShapes().get(prevSelected).setOrigin(prevOrigin);
 	}
 
