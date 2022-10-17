@@ -13,7 +13,6 @@ public class UndoCommand implements Command {
 		}
 	}
 
-	@Override
 	public void undo(Canvas canvas, CommandHistory commandHistory) {
 		
 	}

@@ -5,6 +5,16 @@ import application.shapes.Color;
 public class ColorCommand implements Command {
 	Color prevColor;
 	int prevSelected;
+
+	public ColorCommand () {
+
+	}
+
+	public ColorCommand (Color prevColor, int prevSelected) {
+		this.prevColor = prevColor;
+		this.prevSelected = prevSelected;
+	}
+
 	@Override
 	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		int selected = canvas.getCurrentShape();
@@ -15,7 +25,8 @@ public class ColorCommand implements Command {
 				prevSelected = selected;
 				prevColor = canvas.getShapes().get(selected).getColor();
 				canvas.getShapes().get(selected).setColor(color);
-				commandHistory.addToCommandHistory(this);
+				ColorCommand duplicate = new ColorCommand(this.prevColor, this.prevSelected);
+				commandHistory.addToCommandHistory(duplicate);
 			} else {
 				System.out.println("no shape selected");
 			}

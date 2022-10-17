@@ -7,6 +7,15 @@ public class MoveCommand implements Command{
 	Origin prevOrigin;
 	int prevSelected;
 	
+	public MoveCommand() {
+
+	}
+
+	public MoveCommand(Origin prevOrigin, int prevSelected) {
+		this.prevOrigin = prevOrigin;
+		this.prevSelected = prevSelected;
+	}
+
 	@Override
 	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		int selected = canvas.getCurrentShape();
@@ -20,7 +29,8 @@ public class MoveCommand implements Command{
 				prevSelected = selected;
 				prevOrigin = canvas.getShapes().get(selected).getOrigin();
 				canvas.getShapes().get(selected).setOrigin(origin);
-				commandHistory.addToCommandHistory(this);
+				MoveCommand duplicate = new MoveCommand(this.prevOrigin, this.prevSelected);
+				commandHistory.addToCommandHistory(duplicate);
 			}  else {
 				System.out.println("no shape selected");
 			}

@@ -6,6 +6,14 @@ import application.shapes.Circle;
 
 public class CreateCircleCommand implements Command {
 	Circle newCircle;
+
+	public CreateCircleCommand() {
+
+	}
+
+	public CreateCircleCommand(Circle newCircle) {
+		this.newCircle = newCircle;
+	}
 	
 	@Override
 	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
@@ -16,7 +24,8 @@ public class CreateCircleCommand implements Command {
 			Circle circle = new Circle(Color.Blue, origin, radius);
 			newCircle = circle;
 			canvas.addShape(circle);
-			commandHistory.addToCommandHistory(this);
+			CreateCircleCommand duplicate = new CreateCircleCommand(newCircle);
+			commandHistory.addToCommandHistory(duplicate);
 			//System.out.println(circle.toString());
 		}
 		catch (Exception e) {

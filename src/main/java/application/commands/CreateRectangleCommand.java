@@ -8,6 +8,14 @@ import application.canvas.Canvas;
 public class CreateRectangleCommand implements Command{
 	Rectangle newRectangle;
 	
+	public CreateRectangleCommand () {
+
+	}
+
+	public CreateRectangleCommand(Rectangle newRectangle) {
+		this.newRectangle = newRectangle;
+	}
+
 	@Override
 	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		Origin origin = new Origin(0,0);
@@ -18,8 +26,9 @@ public class CreateRectangleCommand implements Command{
 			height = Integer.parseInt(query[3]);
 			Rectangle rectangle = new Rectangle(Color.Red, origin, height, width);
 			newRectangle = rectangle;
+			CreateRectangleCommand duplicate = new CreateRectangleCommand(this.newRectangle);
 			canvas.addShape(rectangle);
-			commandHistory.addToCommandHistory(this);
+			commandHistory.addToCommandHistory(duplicate);
 			//System.out.println(rectangle.toString());
 		}
 		catch (Exception e) {

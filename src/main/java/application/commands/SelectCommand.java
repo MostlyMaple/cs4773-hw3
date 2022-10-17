@@ -3,13 +3,26 @@ import application.canvas.Canvas;
 
 public class SelectCommand implements Command {
 
+	int prevSelected;
+
+	public SelectCommand () {
+
+	}
+
+	public SelectCommand (int prevSelected) {
+		this.prevSelected = prevSelected;
+	}
+
 	@Override
 	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
-		int selected = -1;
+		int selected;
 		try {
 			selected = Integer.parseInt(query[1]);
 			if ((selected-1) >= 0 && (selected-1) < canvas.getShapes().size()) {
+				prevSelected = canvas.getCurrentShape();
 				canvas.setCurrentShape(selected - 1);
+				SelectCommand duplicate = new SelectCommand(this.prevSelected);
+				commandHistory.addToCommandHistory(duplicate);
 				//System.out.println("Selected: " + (selected));
 			} else {
 				String output = "ERROR: invalid shape for SELECT";
@@ -26,8 +39,7 @@ public class SelectCommand implements Command {
 
 	@Override
 	public void undo(Canvas canvas, CommandHistory commandHistory) {
-		// TODO Auto-generated method stub
-
+		canvas.setCurrentShape(this.prevSelected);
 	}
 
 }

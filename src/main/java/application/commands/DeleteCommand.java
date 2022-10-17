@@ -6,13 +6,23 @@ public class DeleteCommand implements Command{
 	Shape deletedShape;
 	int selectedShape;
 	
+	public DeleteCommand() {
+
+	}
+
+	public DeleteCommand(Shape deletedShape, int selectedShape) {
+		this.deletedShape = deletedShape;
+		this.selectedShape = selectedShape;
+	}
+
 	@Override
 	public void execute(String[] query, Canvas canvas, CommandHistory commandHistory) {
 		int selected = canvas.getCurrentShape();
 		if (selected != -1 && selected < canvas.getShapes().size()) {
 			deletedShape = canvas.getShapes().remove(selected);
 			selectedShape = selected;
-			commandHistory.addToCommandHistory(this);
+			DeleteCommand duplicate = new DeleteCommand(deletedShape, selectedShape);
+			commandHistory.addToCommandHistory(duplicate);
 		} else {
 			System.out.println("no shape selected");
 		}
