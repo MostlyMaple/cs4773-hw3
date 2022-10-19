@@ -23,7 +23,6 @@ public class SelectCommand implements Command {
 				canvas.setCurrentShape(selected - 1);
 				SelectCommand duplicate = new SelectCommand(this.prevSelected);
 				commandHistory.addToCommandHistory(duplicate);
-				//System.out.println("Selected: " + (selected));
 			} else {
 				String output = "ERROR: invalid shape for SELECT";
 				canvas.setOutputString(canvas.getOutputString() + output + '\n');
