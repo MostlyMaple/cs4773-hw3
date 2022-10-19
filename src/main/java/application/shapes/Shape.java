@@ -1,6 +1,7 @@
 package application.shapes;
 
 public class Shape {
+    
     private Color color;
     private Origin origin;
 

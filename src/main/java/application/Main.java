@@ -12,7 +12,7 @@ import application.commands.CommandLoader;
 
 public class Main {
     public static void main(String[] args) {
-        String filename = args[0];
+        String filename = getArgument(args);
         Canvas canvas = new Canvas();
         CommandLoader commandLoader = new CommandLoader();
         CommandHistory commandHistory = new CommandHistory();
@@ -32,5 +32,15 @@ public class Main {
     	    System.out.println("An error occurred.");
     	    e.printStackTrace();
     	}
+    }
+    
+    public static String getArgument(String[] args) {
+        String filename = "";
+        try {
+            filename = args[0];
+        } catch (Exception e) {
+            System.out.println("An error occurred.");
+        }
+        return filename;
     }
 }
